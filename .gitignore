@@ -111,4 +111,4 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode
 
-.configs/mysql_config.class.php
+configs/mysql_config.class.php

@@ -354,7 +354,8 @@ class GestionBoutique extends ModelePDO {
     }
     
     public static function getOrderContentByOder($idCommande) {
-        return self::requeteSelect("*", "lignedecommande", "(idCommande = $idCommande)");
+        return self::requeteSelect("lignedecommande.idCommande, produit.LibelleProduit, lignedecommande.QuantiteCom", "lignedecommande, produit", 
+        "(lignedecommande.idProduit = produit.idProduit) AND (lignedecommande.idCommande = $idCommande)");
     }
     
     public static function getUtilisateurNewsletter() {

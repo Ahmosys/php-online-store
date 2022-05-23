@@ -37,7 +37,7 @@
                             ?>
                             <div class="table-responsive m-5">
                                 <table class="table table-striped table-bordered">
-                                    <caption>Content of your orders</caption>
+                                    <caption>Content of your orders number #<?= VariablesGlobales::$theOrderContent[0]->idCommande ?></caption>
                                     <thead>
                                         <tr>         
                                             <th scope="col">Order Number</th>

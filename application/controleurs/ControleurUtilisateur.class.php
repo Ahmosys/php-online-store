@@ -107,7 +107,7 @@ class ControleurUtilisateur {
      */
     public function editUser() {
        GestionBoutique::updateUser($_SESSION['id_user'], $_POST['edit_last_name'], $_POST['edit_name'], $_POST['edit_username'], $_POST['edit_email'], $_POST['edit_phone_number'], $_POST['edit_address'], $_POST['edit_zip_code'], $_POST['edit_city']);
-       header(Utils::getPreviousURI());
+       header("Location: index.php?controller=Utilisateur&action=ShowIndexUser");
     }
 }
 

@@ -20,10 +20,19 @@ if (!isset($_REQUEST['controller'])) {
     $action = $_REQUEST['action'];
     $controllerClass = 'Controleur' . $_REQUEST['controller'];
     $controllerFile = $controllerClass . ".class.php";
-    require_once(Chemins::CONTROLEURS . $controllerFile);
-
-    $controllerObject = new $controllerClass();
-    $controllerObject->$action();
+    // Permet de vérifié si la valeur écrit dans le paramètre "controller" est bien un nom de classe existant.
+    if (file_exists(Chemins::CONTROLEURS . $controllerFile)) {
+        require_once(Chemins::CONTROLEURS . $controllerFile);
+        $controllerObject = new $controllerClass();
+        // Permet de vérifié que la valeur écrit dans le paramètre "action" est bien un nom de méthode existante.
+        try {
+            $controllerObject->$action();
+        } catch (Error $err) {
+            require_once(Chemins::VUES . "v_error_404.inc.php");
+        }
+    } else {
+        require_once(Chemins::VUES . "v_error_404.inc.php");
+    }
 }
 
 require Chemins::VUES_PERMENENTES.'v_pied.inc.php';
